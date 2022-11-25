@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -14,6 +15,6 @@ import { UsersService } from './users/users.service';
     UsersModule
   ],
   controllers: [AppController],
-  providers: [AuthService],
+  providers: [AuthService, JwtService],
 })
 export class AppModule { }

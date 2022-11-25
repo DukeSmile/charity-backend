@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { FindOneOptions, Repository } from "typeorm";
 import { User } from "./user.entity";
 import CreateUserDto from "./dto/createUser.dto";
 
@@ -12,12 +12,17 @@ export class UsersService {
   ) { }
 
   async getByWalletAddress(address: string) {
-    const user = await this.usersRepository.findOneBy({ wallet_address: address });
+    const findOptions: FindOneOptions = {
+      where: {
+        wallet_address : address
+      }
+    }
+    const user = await this.usersRepository.findOneBy({wallet_address: address});
     if (user) {
       return user;
     }
     throw new HttpException(
-      "User with this email does not exist",
+      "User with this wallet_address does not exist",
       HttpStatus.NOT_FOUND
     );
   }
