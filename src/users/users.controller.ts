@@ -26,7 +26,7 @@ export class UsersController {
                 );
             }
             throw new HttpException(
-                "Something went wrong",
+                error.message,
                 HttpStatus.INTERNAL_SERVER_ERROR
             );
         }

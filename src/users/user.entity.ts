@@ -1,20 +1,23 @@
-import { PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn, Entity } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, CreateDateColumn, Entity } from 'typeorm';
 
 @Entity()
-export class UserEntity {
+export class User {
     @PrimaryGeneratedColumn('uuid')
     public id: string;
+
+    @Column({ type: 'varchar', unique: true})
+    public sign_hash: string;
 
     @Column({ type: 'varchar', unique: true, default: true })
     public wallet_address: string;
 
-    @Column({ type: 'int'})
+    @Column({ type: 'int' })
     public charity_type: number;
 
-    @Column({ type: 'int'})
+    @Column({ type: 'int' })
     public goal: number;
 
-    @Column({ type: 'varchar'})
+    @Column({ type: 'varchar' })
     public fund_type: string;
 
     @Column({ type: 'varchar', length: 100 })
