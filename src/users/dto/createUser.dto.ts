@@ -1,8 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
 
 export default class CreateUserDto {
-    @ApiProperty()
-    public sign_hash: string;
+    // @ApiProperty()
+    // public sign_hash: string;
 
     @ApiProperty()
     public wallet_address: string;

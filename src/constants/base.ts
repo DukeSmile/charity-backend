@@ -1,0 +1,2 @@
+export const ETH_RPC_URL = "";
+export const WEB3_SIGN_MESSAGE = "Welcome to DDA project!\n\nTo get started, click Sign In and accept  Service\n\nThis request will not trigger a blockchain transaction or cost any gas fees.";

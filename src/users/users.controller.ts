@@ -21,7 +21,7 @@ export class UsersController {
         } catch (error) {
             if (error?.code === PostgresErrorCode.UniqueViolation) {
                 throw new HttpException(
-                    "User with that email already exists",
+                    "User with that wallet_address already exists",
                     HttpStatus.BAD_REQUEST
                 );
             }

@@ -10,9 +10,21 @@ export class UsersService {
     @InjectRepository(User)
     private usersRepository: Repository<User>,
   ) { }
+
+  async getByWalletAddress(address: string) {
+    const user = await this.usersRepository.findOneBy({ wallet_address: address });
+    if (user) {
+      return user;
+    }
+    throw new HttpException(
+      "User with this email does not exist",
+      HttpStatus.NOT_FOUND
+    );
+  }
+
   async create(userData: CreateUserDto) {
     const newUser = await this.usersRepository.create(userData);
-    console.log(newUser);
+    // console.log(newUser);
     await this.usersRepository.save(newUser);
 
     return newUser;
