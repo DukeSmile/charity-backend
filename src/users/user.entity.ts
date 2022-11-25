@@ -1,8 +1,8 @@
-// base.entity.ts
-import { PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateColumn, Entity } from 'typeorm';
 
-export abstract class BaseEntity {
-    @PrimaryGeneratedColumn('id')
+@Entity()
+export class UserEntity {
+    @PrimaryGeneratedColumn('uuid')
     public id: string;
 
     @Column({ type: 'varchar', unique: true, default: true })
@@ -61,15 +61,6 @@ export abstract class BaseEntity {
 
     @Column({ type: 'varchar', length: 100 })
     public instagram: string;
-
-    @UpdateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
-    public lastChangedDateTime: Date;
-
-    @Column({ type: 'varchar', length: 300 })
-    public lastChangedBy: string;
-
-    @Column({ type: 'varchar', length: 300, nullable: true })
-    public internalComment: string | null;
 
     @CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
     public createDateTime: Date;
