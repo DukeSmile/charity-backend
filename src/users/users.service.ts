@@ -1,6 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { FindOneOptions, Repository } from "typeorm";
+import PostNotFoundException from "./exceptions/postNotFound.exception";
 import { User } from "./user.entity";
 import CreateUserDto from "./dto/createUser.dto";
 
@@ -37,6 +38,13 @@ export class UsersService {
     }
     user = await this.usersRepository.findOneBy({wallet_address: address});
     return user;
+  }
+
+  async deleteUser(address: string) {
+    const deleteResponse = await this.usersRepository.delete(address);
+    if (!deleteResponse.affected) {
+      throw new PostNotFoundException(address);
+    }
   }
 
   async getByWalletAddress(address: string) {
