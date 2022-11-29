@@ -26,11 +26,12 @@ export class AppController {
   async login(@Body() logindata: LoginDto)
   {
     const user = await this.authService.login(logindata);
-    console.log(user);
+    // console.log(user);
     // response.cookie('accessToken', user.token, {
     //   expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
     // });
     //console.log("ok");
     return user;
   }
+
 }

@@ -32,30 +32,30 @@ export class AuthService {
         wallet_address: ownuser.wallet_address
       };
       return ownuser;
-      return {
-        access: true ,
-        wallet_address: ownuser.wallet_address,
-        charity_type: ownuser.charity_type,
-        goal: ownuser.goal,
-        fund_type: ownuser.fund_type,
-        name: ownuser.name,
-        title: ownuser.title,
-        photo: ownuser.photo,
-        country: ownuser.country,
-        location: ownuser.location,
-        email: ownuser.email,
-        summary: ownuser.summary,
-        detail: ownuser.detail,
-        vip: ownuser.vip,
-        website: ownuser.website,
-        phone: ownuser.phone,
-        linkedin: ownuser.linkedin,
-        twitter: ownuser.twitter,
-        facebook: ownuser.facebook,
-        instagram: ownuser.instagram,
-        createDateTime: Date,
-        token: this.jwtService.sign(payload),
-      };
+      // return {
+      //   access: true ,
+      //   wallet_address: ownuser.wallet_address,
+      //   charity_type: ownuser.charity_type,
+      //   goal: ownuser.goal,
+      //   fund_type: ownuser.fund_type,
+      //   name: ownuser.name,
+      //   title: ownuser.title,
+      //   photo: ownuser.photo,
+      //   country: ownuser.country,
+      //   location: ownuser.location,
+      //   email: ownuser.email,
+      //   summary: ownuser.summary,
+      //   detail: ownuser.detail,
+      //   vip: ownuser.vip,
+      //   website: ownuser.website,
+      //   phone: ownuser.phone,
+      //   linkedin: ownuser.linkedin,
+      //   twitter: ownuser.twitter,
+      //   facebook: ownuser.facebook,
+      //   instagram: ownuser.instagram,
+      //   createDateTime: Date,
+      //   token: this.jwtService.sign(payload),
+      // };
     } catch (error) { 
       return {
         message: error, access: false 

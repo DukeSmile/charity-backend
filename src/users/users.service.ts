@@ -11,6 +11,34 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) { }
 
+  async getAllUsers() {
+    return this.usersRepository
+        .createQueryBuilder()
+        .select("*")
+        .execute();
+  }
+
+  async create(userData: CreateUserDto) {
+    const newUser = await this.usersRepository.create(userData);
+    // console.log(newUser);
+    await this.usersRepository.save(newUser);
+
+    return newUser;
+  }
+
+  async update(address: string, profileDto: CreateUserDto) {
+    let user = await this.usersRepository.findOneBy({wallet_address: address});
+    try {
+      await this.usersRepository.update(user.id, profileDto);
+    } catch (error) { 
+      return {
+        message: 'update failed.', access: false
+      };
+    }
+    user = await this.usersRepository.findOneBy({wallet_address: address});
+    return user;
+  }
+
   async getByWalletAddress(address: string) {
     const findOptions: FindOneOptions = {
       where: {
@@ -25,13 +53,5 @@ export class UsersService {
       "User with this wallet_address does not exist",
       HttpStatus.NOT_FOUND
     );
-  }
-
-  async create(userData: CreateUserDto) {
-    const newUser = await this.usersRepository.create(userData);
-    // console.log(newUser);
-    await this.usersRepository.save(newUser);
-
-    return newUser;
   }
 }
