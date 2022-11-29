@@ -42,13 +42,13 @@ class ConfigService {
       synchronize: true,
       logging: true,
 
-      entities: [join(__dirname, '..','../**/*.entity{.ts,.js}')],
+      entities: ["dist/**/*.entity.js"],
 
       migrationsTableName: 'migration',
 
       migrations: ['src/migrations/**/*.{ts,js}'],
-
       subscribers: ["dist/subscriber/**/*.{ts,js}"],
+      
       ssl: this.isProduction(),
     };
   }
