@@ -46,7 +46,9 @@ class ConfigService {
 
       migrationsTableName: 'migration',
 
-      migrations: ['src/migration/*.ts'],
+      migrations: ['src/migrations/**/*.{ts,js}'],
+
+      subscribers: ["dist/subscriber/**/*.{ts,js}"],
       ssl: this.isProduction(),
     };
   }
