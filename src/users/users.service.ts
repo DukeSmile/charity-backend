@@ -27,7 +27,8 @@ export class UsersService {
     return newUser;
   }
 
-  async update(address: string, profileDto: CreateUserDto) {
+  async update(profileDto: CreateUserDto) {
+    const address = profileDto.wallet_address;
     let user = await this.usersRepository.findOneBy({wallet_address: address});
     try {
       await this.usersRepository.update(user.id, profileDto);

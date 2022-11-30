@@ -20,12 +20,8 @@ export class AuthService {
   // }
 
   async login(user: any) {
-    // console.log(user);
-    const web3 = new (Web3 as any)(
-      new (Web3 as any).providers.HttpProvider(ETH_RPC_URL),
-    );
     try {
-      const address = web3.eth.accounts.recover(WEB3_SIGN_MESSAGE, user.sign_hash);
+      const address = user.wallet_address;
       // console.log(address);
       const ownuser = await this.usersService.getByWalletAddress(address.toLowerCase());
       const payload = {

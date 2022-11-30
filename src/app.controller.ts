@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, SetMetadata } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
@@ -23,6 +23,7 @@ export class AppController {
   @ApiBody({ type: LoginDto })
   @ApiResponse({ status: 403, description: "Forbidden." })
   @Post('login')
+  @SetMetadata('roles', 'login')
   async login(@Body() logindata: LoginDto)
   {
     const user = await this.authService.login(logindata);
