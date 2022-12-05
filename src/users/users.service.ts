@@ -47,6 +47,7 @@ export class UsersService {
     if (!deleteResponse.affected) {
       throw new PostNotFoundException(address);
     }
+    return true;
   }
 
   async getByWalletAddress(address: string) {
