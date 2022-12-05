@@ -42,7 +42,8 @@ export class UsersService {
   }
 
   async deleteUser(address: string) {
-    const deleteResponse = await this.usersRepository.delete(address);
+    const user = await this.usersRepository.findOneBy({wallet_address: address});
+    const deleteResponse = await this.usersRepository.delete(user.id);
     if (!deleteResponse.affected) {
       throw new PostNotFoundException(address);
     }

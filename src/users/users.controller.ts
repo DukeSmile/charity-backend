@@ -62,7 +62,7 @@ export class UsersController {
   // @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: "Delete task" })
   async deleteTask(@Param() { address }: FindOneParams) {
-    return true;
-    // return this.usersService.deleteUser(address);
+    // return true;
+    return this.usersService.deleteUser(address);
   }
 }
