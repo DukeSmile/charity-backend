@@ -9,11 +9,6 @@ import LoginDto from './users/dto/login.dto';
 @Controller("auth")
 export class AppController {
   constructor(private readonly authService: AuthService) {}
-
-  @Get()
-  getHello(): string {
-    return "Hello World";
-  }
   
   @ApiOperation({
     summary: 'Login with metamask sign hash.',
