@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    return true;
+    // return true;
     const roles = this.reflector.get<string>('roles', context.getHandler());
     // console.log(roles);
     if (roles === 'guest') {
